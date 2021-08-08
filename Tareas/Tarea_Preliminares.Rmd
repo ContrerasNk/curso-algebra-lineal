@@ -39,8 +39,8 @@ knitr::include_graphics('img/p2_preliminar.jpeg')
 (1 + 1i) + (1 - 1i)
 
 library(polynom) # Se necesita la librería polynom
-a <- polynomial(coef = c(1,1,1)) # coeficientes de derecha a izquierda: ascendente
-b <- polynomial(coef = c(-1,1)) 
+a <- polynomial(coef = c(1, 1, 1)) # coeficientes de derecha a izquierda: ascendente
+b <- polynomial(coef = c(-1, 1)) 
 a + b
 ```
 ### En python
@@ -53,8 +53,8 @@ a + b
 
 ```{python message = FALSE}
 import numpy as np # Se necesita la librería numpy
-a = np.poly1d([1,1,1]) # coeficientes de izquierda a derecha: descendente
-b = np.poly1d([1,-1])
+a = np.poly1d([1, 1, 1]) # coeficientes de izquierda a derecha: descendente
+b = np.poly1d([1, -1])
 print(a + b) 
 ```
 
@@ -69,15 +69,17 @@ z1 = (2 + 3i) + complex(1, 1) # no se utiliza ';' al final de la asignación
 z1 = (2 + 3i) + complex(1, 1)
 ```
 
+El proceso de a continuación solo es para sumar polinomios en octave
+
 ```{octave}
-p = [1,1,1]; # coeficientes de izquierda a derecha: descendente
-q = [1,-1]; # la ';' se utiliza para terminar la asignación de una variable
-gradoP = length(p)-1; 
-gradoQ = length(q)-1;
+p = [1, 1, 1]; # coeficientes de izquierda a derecha: descendente
+q = [1, -1]; # la ';' se utiliza para terminar la asignación de una variable
+gradoP = length(p) - 1; 
+gradoQ = length(q) - 1;
 p = [zeros(1, gradoQ-gradoP), p]; # Completación de ceros para los de menor grado
 q = [zeros(1, gradoP-gradoQ), q];
-suma = p+q; # Solo es un vector
-polyout(suma,'x') # Asignación de la variable 'x' al vector (de coeficientes)
+suma = p + q; # Solo es un vector
+polyout(suma, 'x') # Asignación de la variable 'x' al vector (de coeficientes)
 ```
 
 
@@ -104,28 +106,28 @@ knitr::include_graphics('img/p3_preliminar.jpeg')
 (1 + 1i)*(1 - 1i)
 
 library(polynom)
-a <- polynomial(coef = c(1,1,1)) 
-b <- polynomial(coef = c(-1,1)) 
+a <- polynomial(coef = c(1, 1, 1)) 
+b <- polynomial(coef = c(-1, 1)) 
 a * b
-c <- polynomial(coef = c(1,1)) 
+c <- polynomial(coef = c(1, 1)) 
 c^2
-c*b
+c * b
 ```
 
 ### En python
 
 ```{python}
-(2 + 3j)*(1 + 1j)
-(1 + 1j)*(1 - 1j)
+(2 + 3j) * (1 + 1j)
+(1 + 1j) * (1 - 1j)
 ```
 
 
 ```{python message = FALSE}
 import numpy as np # Se necesita la librería numpy
-a = np.poly1d([1,1,1]) # coeficientes de izquierda a derecha: descendente
-b = np.poly1d([1,-1])
+a = np.poly1d([1, 1, 1]) # coeficientes de izquierda a derecha: descendente
+b = np.poly1d([1, -1])
 print(a * b) 
-c = np.poly1d([1,1])
+c = np.poly1d([1, 1])
 print(c ** 2)
 print(c * b)
 ```
@@ -133,12 +135,12 @@ print(c * b)
 ### En Octave
 
 ```{octave}
-z1 = (2 + 3i)*(1 + 1i)
+z1 = (2 + 3i) * (1 + 1i)
 
 ```
 
 ```{octave}
-z1 = (1 + 1i)*(1 - 1i)
+z1 = (1 + 1i) * (1 - 1i)
 ```
 
 ```{octave}
@@ -151,14 +153,14 @@ polyout(prod1,'x')
 ```{octave}
 m = [1, 1];
 prod2 = conv(m, m);
-polyout(prod2,'x')
+polyout(prod2, 'x')
 ```
 
 ```{octave}
 m = [1, 1];
 q = [1, -1];
 prod3 = conv(m, q);
-polyout(prod3,'x')
+polyout(prod3, 'x')
 ```
 
 
@@ -182,7 +184,7 @@ knitr::include_graphics('img/p4_preliminar.jpeg')
 
 ### En R
 
-```{r results='hide'}
+```{r}
 round(Mod(2 + 3i), 2)
 Mod(1i)
 Mod(3 + 4i)
@@ -207,7 +209,7 @@ abs((1 + 1j) * (1 - 1j))
 
 
 ```{octave}
-z1 = round(abs(2 + 3i) * 100) / 100
+z1 = round(abs(2 + 3i) * 100) / 100 # para redondear a dos cifras
 ```
 ```{octave}
 z2 = abs(1i)
@@ -232,15 +234,106 @@ z6 = abs((1 + 1i) * (1 - 1i))
 
 ## Pregunta 5
 
+Indica el grado de los siguientes polinomios (realizando primero las operaciones pertinentes):
+
+* $2x + 2$
+* $x^5 + 3x + 2$
+* $(x^2 + x + 1)(x − 1)$
+* $(x + 1)^2$
+* $(x + 1)(x − 1)$
+
 ### Escrito a mano
+
+```{r echo = FALSE, fig.align='center', out.width="40%"}
+knitr::include_graphics('img/p5_preliminar.jpeg')
+```
+
 ### En R
-### En Python
+
+Para $(x^2 + x + 1)(x − 1)$:
+
+```{r}
+a <- polynom::polynomial(coef = c(1, 1, 1))
+b <- polynom::polynomial(coef = c(-1, 1))
+print(paste0("Grado de ", as.character(a * b)," : ", as.character(length(a * b) - 1)))
+```
+
+### En python
+
+Para $(x + 1)^2$:
+
+```{python}
+import numpy as np
+a = np.poly1d([1, 1])
+b = a ** 2
+print("Grado de \n", b, " : ", b.order)
+```
+
+
 ### En Octave
 
+Para $(x + 1)(x − 1)$:
+
+```{octave}
+z1 = [1, 1];
+z2 = [1, -1];
+p = conv(z1, z2);
+grade = length(p) - 1;
+
+printf("Grado de "), polyout(p,'x'), printf("es "), printf(num2str(grade))
+```
 
 ## Pregunta 6
 
+¿Son iguales los siguientes polinomios?
+
+* $(x + 1)^2$ y $x^2 + 1$
+* $(x + 1)^2$ y $x^2 + 2x + 1$
+* $(x + 1)^3$ y $x^3 + 1$
+* $(x + 1)^3$ y $x^3 + 3x^2 + 3x + 1$
+* $(x + 1)(x − 1)$ y $x^2 − 1$
+* $(x − 1)^2$ y $x^2 − 2x + 1$
+
 ### Escrito a mano
+
+
+```{r echo = FALSE, fig.align='center', out.width="40%"}
+knitr::include_graphics('img/p6_preliminar.jpeg')
+```
+
 ### En R
-### En Python
-### En Octave
+Para  $(x + 1)(x − 1)$ y $x^2 − 1$:
+
+```{r}
+a <- polynom::polynomial(coef = c(1, 1)) * polynom::polynomial(coef = c(-1, 1)) # izquierda
+b <- polynom::polynomial(coef = c(-1, 0, 1)) # derecha
+a == b # si se cumple la igualdad dar como resultado TRUE
+```
+
+
+## Pregunta 7
+
+Encuentra las raíces de los siguientes polinomios:
+
+* $2x + 2$
+* $x^5 + 3x + 2$
+* $(x^2 + x + 1)(x − 1)$
+* $(x + 1)^2$
+* $(x + 1)(x − 1)$
+
+### Escrito a mano
+
+```{r echo = FALSE, fig.align='center', out.width="30%"}
+knitr::include_graphics('img/p7_preliminar.jpeg')
+```
+
+### En R
+
+Para $x^5 + 3x + 2$:
+
+```{r}
+a <- polynom::polynomial(coef = c(2, 3, 0, 0, 0, 1))
+r <-  polyroot(c(2, 3, 0, 0, 0, 1))
+print(paste0("La raiz", as.character(1:length(a)), 
+             " de ", as.character(a), " es ", as.character(r)))
+```
