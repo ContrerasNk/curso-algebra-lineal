@@ -1,6 +1,6 @@
 ---
 title: Tema 1 - Matrices
-author: Juan Gabriel Gomila & María Santos
+author: Julio Cesar Contreras Huerta - Apuntes y Aportes
 date: 
 output: 
   ioslides_presentation:
