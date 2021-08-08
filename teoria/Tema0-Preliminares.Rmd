@@ -1,6 +1,6 @@
 ---
 title: "Tema 0 - Preliminares"
-author: "Juan Gabriel Gomila & María Santos"
+author: "Julio Cesar Contreras Huerta - Aportes"
 date: 
 output: 
   ioslides_presentation:
