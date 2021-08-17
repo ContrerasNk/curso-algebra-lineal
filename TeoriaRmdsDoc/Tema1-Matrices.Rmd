@@ -4,6 +4,7 @@ author: <center> <h2> *Julio Cesar Contreras* </h2> </center>
 date: "***`r format(Sys.time(), '%B %d, %Y')`***"
 output:
   html_document:
+    fig_caption: yes
     toc: yes
     toc_depth: 6 # es el nivel de subtitulos que se incluira en el indice
     toc_float:
@@ -11,7 +12,8 @@ output:
       smooth_scroll: true # pasar a de titulos animadamentes con clic en el indice
     number_sections: true
     theme: journal # se puede css: con algun style.css
-    code_folding: hide
+    fig_width: 7
+    fig_height: 6
 ---
 
 [Para más estilos de encabezados](https://bookdown.org/yihui/rmarkdown/html-document.html)
@@ -19,6 +21,12 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, comment = NA)
 ```
+
+```{r, eval = TRUE, echo = FALSE}
+library(captioner)
+fig_nums <- captioner()
+```
+
 
 # Definiciones generales
 
@@ -543,6 +551,25 @@ Escribe paso a paso la demostración de esta propiedad tomando como ejemplo las 
 
 <l class = "observ">Observación.</l>Nótese que, en particular, para matrices cuadradas $A\in\mathcal{M}_n(\mathbb{K})$, $I_n$ es un elemento neutro del producto, es decir: $AI_n=I_nA=A$ para toda matriz cuadrada $A$ de orden $n$.
 
+
+
+```{r, echo=FALSE, fig.cap=fig_nums("Ejercicio","Ejercicio 6.1"), out.width='80%', fig.align='center'}
+knitr::include_graphics('Images/Ejercicio6PropMatrix.png')
+```
+\listoffigures
+
+```{r, echo=FALSE, fig.cap=fig_nums("Ejercicio","Ejercicio 6.2"), out.width='80%', fig.align='center'}
+knitr::include_graphics('Images/Ejercicio6PropMatrixMateFacil1.png')
+```
+
+\listoffigures
+
+```{r, echo=FALSE, fig.cap=fig_nums("Ejercicio","Ejercicio 6.3"), out.width='80%', fig.align='center'}
+knitr::include_graphics('Images/Ejercicio6PropMatrixMateFacil2.png')
+```
+
+
+
 <div class="example">
 **Ejemplo 21**
 
@@ -671,9 +698,11 @@ Escribe paso a paso la demostración de esta propiedad tomando como ejemplo las 
 </div>
 
 
-## Excepciones
+# Excepciones Propiedades
 
 En general, no se cumplen las siguientes propiedades:
+
+## Propiedad conmutativa
 
 <l class="prop">
 Propiedad conmutativa.
@@ -686,7 +715,7 @@ $$A = \begin{pmatrix}0&1\\0&0\end{pmatrix},\ B=\begin{pmatrix}0&0\\1&0\end{pmatr
 $$AB = \begin{pmatrix}1&0\\0&0\end{pmatrix}\ne\begin{pmatrix}0&0\\0&1\end{pmatrix}=BA$$
 </div>
 
-## Excepciones
+## Ley de simplificación
 
 <l class="prop">
 Ley de simplificación.
@@ -704,7 +733,7 @@ satisfacen $AB=AC$, pero en cambio $B\ne C$
 **Ejercicio 12.** Comprueba que efectivamente $AB=AC$
 </div>
 
-## Excepciones
+## Divisores de cero
 
 <l class="prop">
 Divisores de cero.
